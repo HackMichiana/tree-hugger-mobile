@@ -1,0 +1,85 @@
+<ion-view hide-back-button="true" title="{{ title}}">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="submit()"><i class="icon ion-edit"></i></button>
+  </ion-nav-buttons>
+  
+  <ion-content padding="true">
+
+<!--    <button class="button button-full button-positive" id="signin" ng-click="submit()">
+        Hug a Tree
+      </button>-->
+    
+    <div class="list">
+      <div id="treePhotoContainer" class="item row responsive-sm">
+        <img id="treePhoto" style="display: none;" src="engage/images/placehold.png" alt=""/><br />
+      </div>
+      
+      <div id="takeTreePhotoContainer" class="item row responsive-sm">
+        <div class="col col-offset-25 col-50">
+          <button class="button button-balanced button-full" ng-click="takeTreePhoto()">Take Tree Photo</button>
+        </div>
+      </div>
+      
+      
+      <label class="item item-input item-select item-stacked-label">
+        <div class="input-label">
+          Diameter
+        </div>
+        <select id="diameter">
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+      </label>
+      
+      <label class="item item-input item-select item-stacked-label">
+        <div class="input-label">
+          Height
+        </div>
+        <select id="height">
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+      </label>
+      
+      <label class="item item-input item-select item-stacked-label">
+        <div class="input-label">
+          Condition
+        </div>
+        <select id="condition">
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+      </label>
+      
+      <label class="item item-input item-select item-stacked-label">
+        <div class="input-label">
+          Maintenance
+        </div>
+        <select id="maintenance">
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+      </label>
+      
+      <label class="item item-input item-select item-stacked-label">
+        <div class="input-label">
+          Species
+        </div>
+        <select id="species">
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+      </label>
+      
+      <div id="leafPhotoContainer" class="item row responsive-sm">
+        <img id="leafPhoto" style="display: none;" src="engage/images/placehold.png" alt="" /><br />
+      </div>
+      
+      <div id="takeLeafPhotoContainer" class="item row responsive-sm">
+        <div class="col col-offset-25 col-50">
+          <button class="button button-balanced button-full" ng-click="takeLeafPhoto()">Take Leaf Photo</button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

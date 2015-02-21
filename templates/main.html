@@ -1,0 +1,37 @@
+<ion-side-menus>
+
+  <ion-side-menu-content>
+    <!-- Bar in the nave menu -->
+    <ion-nav-bar class="nav-title-slide-ios7 bar-light">
+      <!-- Buttons to appear on the left side. This stays here regardless of what is happening on the right side.-->
+      <ion-nav-buttons side="left">
+        <button id="menuButton" ng-controller="SideMenuButtonCtrl" class="button button-icon ion-navicon" ng-click="toggleLeft()" ng-hide="$exposeAside.active"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <!-- contains pages. -->
+    <ion-nav-view name="main"></ion-nav-view>
+
+  </ion-side-menu-content>
+
+  <!--Actual side menu content.-->
+  <ion-side-menu expose-aside-when="large">
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Menu</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+        <a class="item" href="#/main/trees" menu-close>
+          Trees
+        </a>
+        <a class="item" href="#/main/trees/add" menu-close>
+          Add Tree
+        </a>
+        <a class="item" href="#/logout" menu-close>
+          Logout
+        </a>
+      </div>
+    </ion-content>
+  </ion-side-menu>
+
+</ion-side-menus>

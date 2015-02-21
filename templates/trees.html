@@ -1,0 +1,15 @@
+<ion-view hide-back-button="true" title="{{ title }}">
+  <ion-nav-buttons side="right">
+    <button id="reload" class="button button-clear" ng-click="reload()"><i class="icon ion-ios7-reload"></i></button>
+    <a id="addtree" class="button button-clear" href="#/main/trees/add"><i class="icon ion-android-add"></i></a>
+  </ion-nav-buttons>
+  
+  <ion-content>
+    <div class="list">
+      <a class="item" href="#/main/tree/{{ tree.id }}" ng-repeat="tree in treeList">
+        <h2>{{ tree.name }}</h2>
+        <p>{{ tree.description }}</p>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>
