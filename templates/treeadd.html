@@ -2,84 +2,100 @@
   <ion-nav-buttons side="right">
     <button class="button button-clear" ng-click="submit()"><i class="icon ion-edit"></i></button>
   </ion-nav-buttons>
-  
+
   <ion-content padding="true">
 
-<!--    <button class="button button-full button-positive" id="signin" ng-click="submit()">
-        Hug a Tree
-      </button>-->
-    
-    <div class="list">
-      <div id="treePhotoContainer" class="item row responsive-sm">
-        <img id="treePhoto" style="display: none;" src="engage/images/placehold.png" alt=""/><br />
-      </div>
-      
-      <div id="takeTreePhotoContainer" class="item row responsive-sm">
-        <div class="col col-offset-25 col-50">
-          <button class="button button-balanced button-full" ng-click="takeTreePhoto()">Take Tree Photo</button>
+    <!--    <button class="button button-full button-positive" id="signin" ng-click="submit()">
+            Hug a Tree
+          </button>-->
+
+    <form id="tree-form">
+      <div class="list">
+        <div id="treePhotoContainer" class="item row responsive-sm">
+          <img id="treePhoto" style="display: none;" src="engage/images/placehold.png" alt=""/><br />
+        </div>
+
+        <div id="takeTreePhotoContainer" class="item row responsive-sm">
+          <div class="col col-offset-25 col-50">
+            <button class="button button-balanced button-full" ng-click="takeTreePhoto()">Take Tree Photo</button>
+          </div>
+        </div>
+
+
+        <label class="item item-input item-select item-stacked-label">
+          <div class="input-label">
+            Diameter
+          </div>
+          <select id="diameter" name="diameter">
+            <option value="U">Unknown</option>
+            <option value="Y">Young</option>
+            <option value="E">Established</option>
+            <option value="M">Maturing</option>
+            <option value="MA">Mature</option>
+          </select>
+        </label>
+
+        <label class="item item-input item-select item-stacked-label">
+          <div class="input-label">
+            Height
+          </div>
+          <select id="height" name="height">
+            <option value="U">Unknown</option>
+            <option value="S">Small</option>
+            <option value="M">Medium</option>
+            <option value="L">Large</option>
+          </select>
+        </label>
+
+        <label class="item item-input item-select item-stacked-label">
+          <div class="input-label">
+            Condition
+          </div>
+          <select id="condition" name="condition">
+            <option value="U">Unknown</option>
+            <option value="E">Excellent</option>
+            <option value="G">Good</option>
+            <option value="F">Fair</option>
+            <option value="P">Poor</option>
+            <option value="D">Dying</option>
+            <option value="D">Dead</option>
+          </select>
+        </label>
+
+        <label class="item item-input item-select item-stacked-label">
+          <div class="input-label">
+            Maintenance
+          </div>
+          <select id="maintenance">
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+        </label>
+
+        <label class="item item-input item-select item-stacked-label">
+          <div class="input-label">
+            Species
+          </div>
+          <select id="species">
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+        </label>
+
+        <div id="leafPhotoContainer" class="item row responsive-sm">
+          <img id="leafPhoto" style="display: none;" src="engage/images/placehold.png" alt="" /><br />
+        </div>
+
+        <div id="takeLeafPhotoContainer" class="item row responsive-sm">
+          <div class="col col-offset-25 col-50">
+            <button class="button button-balanced button-full" ng-click="takeLeafPhoto()">Take Leaf Photo</button>
+          </div>
         </div>
       </div>
       
-      
-      <label class="item item-input item-select item-stacked-label">
-        <div class="input-label">
-          Diameter
-        </div>
-        <select id="diameter">
-          <option value=""></option>
-          <option value=""></option>
-        </select>
-      </label>
-      
-      <label class="item item-input item-select item-stacked-label">
-        <div class="input-label">
-          Height
-        </div>
-        <select id="height">
-          <option value=""></option>
-          <option value=""></option>
-        </select>
-      </label>
-      
-      <label class="item item-input item-select item-stacked-label">
-        <div class="input-label">
-          Condition
-        </div>
-        <select id="condition">
-          <option value=""></option>
-          <option value=""></option>
-        </select>
-      </label>
-      
-      <label class="item item-input item-select item-stacked-label">
-        <div class="input-label">
-          Maintenance
-        </div>
-        <select id="maintenance">
-          <option value=""></option>
-          <option value=""></option>
-        </select>
-      </label>
-      
-      <label class="item item-input item-select item-stacked-label">
-        <div class="input-label">
-          Species
-        </div>
-        <select id="species">
-          <option value=""></option>
-          <option value=""></option>
-        </select>
-      </label>
-      
-      <div id="leafPhotoContainer" class="item row responsive-sm">
-        <img id="leafPhoto" style="display: none;" src="engage/images/placehold.png" alt="" /><br />
-      </div>
-      
-      <div id="takeLeafPhotoContainer" class="item row responsive-sm">
-        <div class="col col-offset-25 col-50">
-          <button class="button button-balanced button-full" ng-click="takeLeafPhoto()">Take Leaf Photo</button>
-        </div>
-      </div>
-    </div>
+      <input type="hidden" id="latitude" name="latitude" value="41.66868032440676" />
+      <input type="hidden" id="longitude" name="longitude" value="-86.20584024658203" />
+      <input type="hidden" id="accuracy" name="accuracy" value="0" />
+    </form>
   </ion-content>
 </ion-view>

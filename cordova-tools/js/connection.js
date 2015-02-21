@@ -167,6 +167,8 @@ var ConnectionManager = function($http, $ionicPopup, AppConfig) {
     if(authenticate) {
       authenticationRequired();
     }
+    
+    //$http.defaults.headers.common['Content-Type'] = 'multipart/form-data';
 
     // Define the default options.
     var ajax_defaults = {
@@ -191,7 +193,10 @@ var ConnectionManager = function($http, $ionicPopup, AppConfig) {
     var request = $http({
       url: url,
       method: method,
-      data: settings.data
+      data: settings.data,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
 
     request.success(function(data, status, headers, config) {

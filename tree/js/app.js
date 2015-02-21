@@ -182,36 +182,27 @@ app.controller('HomeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$ionicL
       });
 
       conn.success(function (data, status, headers, config) {
-        $scope.boardList = data.userboard_list;
+        $scope.treeList = data.objects;
       });
 
       conn.error(function (data, status, headers, config) {
-        conn.showAlert('Board Error', 'Error fetching boards.');
+        conn.showAlert('Board Error', 'Error fetching trees.');
       });
 
       conn.finished(function () {
         $ionicLoading.hide();
       });
 
-//      conn.ajax({
-//        method: 'GET',
-//        url: '/engage/api/boards/'
-//      }, true);
-        $scope.treeList.push({
-          'id': 5,
-          'name': 'Tree 1'
-        });
-        $ionicLoading.hide();
+      conn.ajax({
+        method: 'GET',
+        url: '/api/v1/tree/'
+      }, false);
     };
 
     $scope.reload();
   }]).controller('TreeAddCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$stateParams', '$location', '$ionicModal', '$ionicLoading', '$timeout', 'ConnectionManager',
   function ($scope, $state, $http, $ionicPopup, $stateParams, $location, $ionicModal, $ionicLoading, $timeout, ConnectionManager) {
     $scope.title = 'Board';
-    $scope.challengeList = [];
-    $scope.page = 1;
-    $scope.totalPages = 1;
-    $scope.board_id = $stateParams.board_id;
 
     var conn = ConnectionManager;
     conn.init($scope);
@@ -231,10 +222,10 @@ app.controller('HomeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$ionicL
         $scope.modal.show();
       });
     };
+    
+    
 
-    $scope.back = function () {
-      window.history.go(-1);
-    };
+    
     
     $scope.takeTreePhoto = function() {
       
@@ -245,22 +236,98 @@ app.controller('HomeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$ionicL
     };
     
     $scope.submit = function() {
+      $ionicLoading.show({
+        template: 'Submitting...'
+      });
       
+      conn.success(function (data, status, headers, config) {
+        alert(JSON.stringify(data));
+      });
+
+      conn.error(function (data, status, headers, config) {
+        alert(JSON.stringify(data));
+        conn.showAlert('Board Error', 'Error submitting tree.');
+      });
+
+      conn.finished(function () {
+        $ionicLoading.hide();
+      });
+
+      var data = {"accuracy": $('#accuracy').val(),
+        "condition": $('#condition').val(),
+        "diameter": $('#diameter').val(),
+        "height": $('#height').val(),
+        "latitude": $('#latitude').val(),
+        "longitude": $('#longitude').val()};
+      
+      conn.ajax({
+        method: 'POST',
+        data: JSON.stringify(data),
+        url: '/api/v1/tree/'
+      }, false);
+    };
+    
+    $scope.back = function () {
+      window.history.go(-1);
     };
     
   }]).controller('TreeEditCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$stateParams', '$ionicModal', '$ionicLoading', '$timeout', '$ionicTabsDelegate', 'ConnectionManager',
   function ($scope, $state, $http, $ionicPopup, $stateParams, $ionicModal, $ionicLoading, $timeout, $ionicTabsDelegate, ConnectionManager) {
-    $scope.title = 'Edit Challenge';
+    
+    $scope.title = 'Edit Tree';
+    
+  }]).controller('TreeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$stateParams', '$ionicModal', '$ionicLoading', '$timeout', '$ionicTabsDelegate', 'ConnectionManager',
+  function ($scope, $state, $http, $ionicPopup, $stateParams, $ionicModal, $ionicLoading, $timeout, $ionicTabsDelegate, ConnectionManager) {
+    
+    $scope.title = 'Tree';
+    $scope.tree = null;
+    var url = '/api/v1/tree/' + $stateParams.tree_id + '/';
+    
+    var conn = ConnectionManager;
+    conn.init($scope);
+
+    $scope.reload = function () {
+      $ionicLoading.show({
+        template: 'Loading...'
+      });
+
+      conn.success(function (data, status, headers, config) {
+        $scope.tree = data;
+        
+        if($scope.tree) {
+          var diameter = {'Y': 'Young', 'E': 'Established', 'M': 'Maturing', 'MA': 'Mature', 'U': 'Unknown'};
+//          var height = {'S': 'Small', 'M': 'Medium', 'L': 'Large', 'U': 'Unknown'};
+          var condition = {'E': 'Excellent', 'G': 'Good', 'F': 'Fair', 'P': 'Poor', 'D': 'Dying', 'X': 'Dead', 'U': 'Unknown'};
+          $scope.tree.diameter = diameter[$scope.tree.diameter];
+//          $scope.tree.height = height[$scope.tree.height];
+          $scope.tree.condition = condition[$scope.tree.condition];
+        }
+      });
+
+      conn.error(function (data, status, headers, config) {
+        conn.showAlert('Board Error', 'Error fetching tree.');
+      });
+
+      conn.finished(function () {
+        $ionicLoading.hide();
+      });
+
+      conn.ajax({
+        method: 'GET',
+        url: url
+      }, false);
+    };
+
+    $scope.reload();
+    
+    
+    $scope.back = function() {
+      window.history.go(-1);
+    };
+    
   }]).controller('SideMenuButtonCtrl', ['$scope', '$ionicSideMenuDelegate',
   function ($scope, $ionicSideMenuDelegate) {
     $scope.toggleLeft = function () {
-      $ionicSideMenuDelegate.toggleLeft();
-    };
-  }]).controller('SideMenuCtrl', ['$scope', '$ionicSideMenuDelegate', '$location',
-  function ($scope, $ionicSideMenuDelegate, $location) {
-    $scope.goTo = function ($event) {
-      $event.preventDefault();
-      $location.path($($event.target).attr('href'));
       $ionicSideMenuDelegate.toggleLeft();
     };
   }]);

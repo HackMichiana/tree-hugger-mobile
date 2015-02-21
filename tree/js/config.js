@@ -7,13 +7,13 @@ var AppConfig = function() {
     if($env === 'production') {
       $host = 'http://engage.minilabs.co';
     } else if($env === 'qa') {
-      $host = 'http://redbk.com';
+      $host = 'http://192.168.7.223:8000';
     } else {
       $host = 'http://localhost';
     }
     
     if(_.isUndefined(window.navigator.network)) {
-      $host = 'http://localhost';
+      $host = 'http://192.168.7.223:8000';
     } else {
       $host = 'http://redbk.com';
     }
@@ -26,5 +26,3 @@ var AppConfig = function() {
   
   return $public;
 };
-
-

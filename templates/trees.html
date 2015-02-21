@@ -6,9 +6,9 @@
   
   <ion-content>
     <div class="list">
-      <a class="item" href="#/main/tree/{{ tree.id }}" ng-repeat="tree in treeList">
-        <h2>{{ tree.name }}</h2>
-        <p>{{ tree.description }}</p>
+      <a class="item" href="#/main/trees/{{ tree.id }}" ng-repeat="tree in treeList">
+        <h2>{{ tree.id }}</h2>
+        <p>{{ tree.latitude }}, {{ tree.longitude }}</p>
       </a>
     </div>
   </ion-content>

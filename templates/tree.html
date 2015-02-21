@@ -1,115 +1,55 @@
 <ion-view title="{{ title}}">
 
-
   <ion-nav-buttons side="right">
     <button class="button button-clear" ng-click="back()"><i class="icon ion-ios7-arrow-back"></i></button>
     <button id="reload" class="button button-clear" ng-click="reload()"><i class="icon ion-ios7-reload"></i></button>
   </ion-nav-buttons>
 
-  <!--<ion-nav-bar>
-    <ion-nav-buttons side="left">
-      <button class="button" ng-click="back()"><i class="icon ion-ios7-arrow-back"></i></button>
-    </ion-nav-buttons>
-  
-    <ion-nav-buttons side="right">
-      <button id="reload" class="button" ng-click="back()"><i class="icon ion-ios7-reload"></i></button>
-    </ion-nav-buttons>
-  </ion-nav-bar>-->
-
-  <!--<ion-header-bar align-title="left">
-    <div class="buttons">
-      <button class="button button-clear" ng-click="back()"><i class="icon ion-ios7-arrow-back"></i></button>
-    </div>
-    <h1 class="title">Board!</h1>
-    <div class="buttons">
-      <button id="reload" class="button button-clear" ng-click="reload()"><i class="icon ion-ios7-reload"></i></button>
-    </div>
-  </ion-header-bar>-->
-
   <ion-content>
-    <div class="row">
-      <div class="col col-50">
-        <a class="button button-full button-positive button-small" href="#/main/boards/{{ board_id}}/leaderboard">Leader Board</a>
+    <div class="list">
+      <div class="item item-icon-left" href="#">
+        <i class="icon ion-information"></i>
+        Longitude
+        <span class="item-note">
+          {{ tree.longitude}}
+        </span>
       </div>
-      <div class="col col-25"></div>
-      <div class="col col-25">
-        <button class="button button-full button-clear button-small" ng-show="page > 1" ng-click="previous()"><i class="icon ion-chevron-left"></i></button>
-        <button class="button button-full button-clear button-small" ng-show="page < totalPages" ng-click="next()"><i class="icon ion-chevron-right"></i></button>
+      <div class="item item-icon-left" href="#">
+        <i class="icon ion-information"></i>
+        Latitude
+        <span class="item-note">
+          {{ tree.latitude}}
+        </span>
+      </div>
+      <div class="item item-icon-left" href="#">
+        <i class="icon ion-information"></i>
+        Accuracy
+        <span class="item-note">
+          {{ tree.accuracy}}
+        </span>
+      </div>
+      <div class="item item-icon-left" href="#">
+        <i class="icon ion-information"></i>
+        Diameter
+        <span class="item-note">
+          {{ tree.diameter}}
+        </span>
+      </div>
+      <div class="item item-icon-left" href="#">
+        <i class="icon ion-information"></i>
+        Condition
+        <span class="item-note">
+          {{ tree.condition}}
+        </span>
+      </div>
+      <div class="item item-icon-left" href="#">
+        <i class="icon ion-information"></i>
+        Height
+        <span class="item-note">
+          {{ tree.height}}
+        </span>
       </div>
     </div>
 
-    
-<!--    <ul class="flex-container">
-      <li class="flex-item">1</li>
-      <li class="flex-item">2</li>
-      <li class="flex-item">3</li>
-      <li class="flex-item">4</li>
-    </ul>
-    
-    <ul class="flex-container">
-      <li class="flex-item">1</li>
-      <li class="flex-item">2</li>
-      <li class="flex-item">3</li>
-      <li class="flex-item">4</li>
-    </ul>-->
-
-<div id="grid" style="display: none;">
-  <div class="row">
-    <div class="col col-25">
-      <div class="board-box" id="box_1" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_2" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_3" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_4" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-25">
-      <div class="board-box" id="box_5" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_6" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_7" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_8" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-25">
-      <div class="board-box" id="box_9" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_10" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_11" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_12" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-25">
-      <div class="board-box" id="box_13" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_14" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_15" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-    <div class="col col-25">
-      <div class="board-box" id="box_16" data-index="" ng-click="challengeInfoModal($event)"></div>
-    </div>
-  </div>
-</div>
   </ion-content>
 </ion-view>
