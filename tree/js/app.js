@@ -103,7 +103,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
     });
 
     // If nothing, always go to the home page.
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/main/trees");
   }]);
 
 app.factory('Capture', Capture);
@@ -120,7 +120,7 @@ app.controller('HomeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$ionicL
     $scope.signIn = function () {
       $state.go('main.trees');
       return;
-      
+
       // Make the signin button into a spinner.
       $ionicLoading.show({template: 'Signing in...'});
 
@@ -202,7 +202,7 @@ app.controller('HomeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$ionicL
     $scope.reload();
   }]).controller('TreeAddCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$stateParams', '$location', '$ionicModal', '$ionicLoading', '$timeout', 'ConnectionManager',
   function ($scope, $state, $http, $ionicPopup, $stateParams, $location, $ionicModal, $ionicLoading, $timeout, ConnectionManager) {
-    $scope.title = 'Board';
+    $scope.title = 'Add A Tree';
 
     var conn = ConnectionManager;
     conn.init($scope);
@@ -222,24 +222,24 @@ app.controller('HomeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$ionicL
         $scope.modal.show();
       });
     };
-    
-    
 
-    
-    
+
+
+
+
     $scope.takeTreePhoto = function() {
-      
+
     };
-    
+
     $scope.takeLeafPhoto = function() {
-      
+
     };
-    
+
     $scope.submit = function() {
       $ionicLoading.show({
         template: 'Submitting...'
       });
-      
+
       conn.success(function (data, status, headers, config) {
         alert(JSON.stringify(data));
       });
@@ -259,30 +259,30 @@ app.controller('HomeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$ionicL
         "height": $('#height').val(),
         "latitude": $('#latitude').val(),
         "longitude": $('#longitude').val()};
-      
+
       conn.ajax({
         method: 'POST',
         data: JSON.stringify(data),
         url: '/api/v1/tree/'
       }, false);
     };
-    
+
     $scope.back = function () {
       window.history.go(-1);
     };
-    
+
   }]).controller('TreeEditCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$stateParams', '$ionicModal', '$ionicLoading', '$timeout', '$ionicTabsDelegate', 'ConnectionManager',
   function ($scope, $state, $http, $ionicPopup, $stateParams, $ionicModal, $ionicLoading, $timeout, $ionicTabsDelegate, ConnectionManager) {
-    
+
     $scope.title = 'Edit Tree';
-    
+
   }]).controller('TreeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$stateParams', '$ionicModal', '$ionicLoading', '$timeout', '$ionicTabsDelegate', 'ConnectionManager',
   function ($scope, $state, $http, $ionicPopup, $stateParams, $ionicModal, $ionicLoading, $timeout, $ionicTabsDelegate, ConnectionManager) {
-    
+
     $scope.title = 'Tree';
     $scope.tree = null;
     var url = '/api/v1/tree/' + $stateParams.tree_id + '/';
-    
+
     var conn = ConnectionManager;
     conn.init($scope);
 
@@ -293,7 +293,7 @@ app.controller('HomeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$ionicL
 
       conn.success(function (data, status, headers, config) {
         $scope.tree = data;
-        
+
         if($scope.tree) {
           var diameter = {'Y': 'Young', 'E': 'Established', 'M': 'Maturing', 'MA': 'Mature', 'U': 'Unknown'};
 //          var height = {'S': 'Small', 'M': 'Medium', 'L': 'Large', 'U': 'Unknown'};
@@ -319,12 +319,12 @@ app.controller('HomeCtrl', ['$scope', '$state', '$http', '$ionicPopup', '$ionicL
     };
 
     $scope.reload();
-    
-    
+
+
     $scope.back = function() {
       window.history.go(-1);
     };
-    
+
   }]).controller('SideMenuButtonCtrl', ['$scope', '$ionicSideMenuDelegate',
   function ($scope, $ionicSideMenuDelegate) {
     $scope.toggleLeft = function () {
